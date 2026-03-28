@@ -1,93 +1,200 @@
-# Beijing Air Quality Analysis Using Power BI
+🌍 Air Quality Index Pattern Clustering for Pollution Source Analysis
+📌 Project Overview
 
-## Introduction
+Air pollution is a major environmental and public health concern. Different pollution sources such as traffic, industrial activities, construction dust, and seasonal factors contribute differently to air quality deterioration.
 
-Welcome to the **Beijing Air Quality Analysis** project! This repository contains an in-depth analysis of the air quality in Beijing using Power BI and Excel. The objective of this project is to analyze and visualize the air pollution levels in Beijing, identify trends, and derive insights that can be used for making data-driven decisions to improve air quality.
+This project presents an end-to-end unsupervised machine learning framework to analyze large-scale air quality data and automatically identify pollution source patterns using clustering techniques.
 
-## Key Features
-📌 Air Quality Index (AQI) Analysis: Monitor and evaluate the air quality index over time, identifying patterns and trends.
+The system processes raw air quality data, engineers meaningful pollution features, applies clustering algorithms, evaluates cluster quality, and interprets clusters as real-world pollution sources.
 
-📌 Pollutant Concentration Tracking: Measure and analyze the levels of key pollutants such as PM2.5, PM10, SO2, NO2, CO, and O3.
+🎯 Objectives
 
-📌 Seasonal and Temporal Insights: Discover how air quality varies with seasons, weather conditions, and time of day.
+Process and clean large-scale air quality datasets
 
-📌 Geographical Mapping: Visualize air quality data across different regions of Beijing, pinpointing areas with critical pollution levels.
+Engineer pollution pattern features (ratios, temporal indicators)
 
-## Built with
-- Power BI Desktop
-- Excel
+Apply unsupervised clustering (K-Means, Hierarchical, DBSCAN)
 
-## Dataset
+Determine the optimal number of clusters using evaluation metrics
 
-The dataset used for this analysis is obtained from [source link] and includes information on various air pollutants like PM2.5, PM10, NO2, SO2, CO, and O3 from multiple monitoring stations across Beijing over several years.
+Interpret clusters as pollution sources:
 
-Key features of the dataset:
-- Date and time of the measurements
-- Concentrations of pollutants (PM2.5, PM10, NO2, SO2, CO, O3)
-- Meteorological data (temperature, pressure, dew point, wind speed, etc.)
+Traffic emissions
 
-## Key Insights
-- Air Quality Trends: Observe how air quality has changed over months and years, identifying periods of significant improvement or decline.
-- Pollutant Sources: Determine the primary sources of various pollutants, aiding in targeted mitigation strategies.
-- Impact of Policies: Assess the effectiveness of environmental policies and regulations on improving air quality.
-- Health Implications: Understand the potential health risks associated with varying levels of air pollution.
+Industrial emissions
 
-## Analysis
+Construction & dust pollution
 
-The analysis focuses on the following key areas:
-- **Trend Analysis:** Identifying trends in air pollution over time.
-- **Seasonal Variations:** Understanding how air quality varies with seasons.
+Seasonal/background pollution
+
+Provide research-ready visualizations and insights
+
+🧠 Why Clustering?
+
+Pollution source labels are not available
+
+Clustering helps discover hidden patterns without supervision
+
+Enables data-driven source attribution
+
+Suitable for large, real-world environmental datasets
+
+🗂️ Project Folder Structure
+Air-Quality-Index-Pattern-Clustering/
+│
+├── data/
+│   ├── raw/                    # Raw input datasets
+│   └── processed/              # Cleaned & feature-engineered datasets
+│
+├── src/
+│   ├── 01_data_loading.py
+│   ├── 02_data_cleaning.py
+│   ├── 03_feature_engineering.py
+│   ├── 04_eda.py
+│   ├── 05_clustering_kmeans.py
+│   ├── 06_clustering_hierarchical.py
+│   ├── 07_clustering_dbscan.py
+│   ├── 08_evaluation.py
+│   ├── 09_cluster_interpretation.py
+│   └── 10_cluster_visualization.py
+│
+├── results/
+│   ├── figures/                # All generated plots
+│   └── cluster_profiles.csv    # Cluster-wise statistics
+│
+├── notebooks/                  # (Optional) Jupyter notebooks
+│
+├── README.md                   # Project documentation
+└── requirements.txt            # Python dependencies
+
+📊 Dataset Description
+
+Source: Public air quality datasets (India / Beijing)
+
+Granularity: Hourly observations
+
+Key Pollutants:
+
+PM2.5, PM10
+
+NO2, SO2, CO, O3
+
+Additional Features:
+
+AQI
+
+Temporal features (hour, day, season)
+
+Station ID
+
+⚙️ Tech Stack & Libraries
+
+Language: Python
+
+Libraries:
+
+Pandas, NumPy
+
+Scikit-learn
+
+Matplotlib, Seaborn
+
+▶️ How to Run the Project
+1️⃣ Install Dependencies
+pip install -r requirements.txt
+
+2️⃣ Run Files in Sequence
+python src/01_data_loading.py
+python src/02_data_cleaning.py
+python src/03_feature_engineering.py
+python src/04_eda.py
+python src/05_clustering_kmeans.py
+python src/06_clustering_hierarchical.py
+python src/07_clustering_dbscan.py
+python src/08_evaluation.py
+python src/09_cluster_interpretation.py
+python src/10_cluster_visualization.py
 
 
-## Visualizations
+📌 Important:
+Evaluation and visualization steps use sampling for computational efficiency.
 
-Various visualizations have been created to represent the data effectively, including:
-- Line charts for trend analysis.
-- Bar charts for comparing pollution levels.
-- Donut chart for understanding distribution.
+📈 Clustering Techniques Used
+🔹 K-Means (Primary Model)
 
-## Power BI Dashboard
+Pattern-based features
 
-The Power BI dashboard provides an interactive way to explore the air quality data. It includes multiple pages with detailed visualizations and filters to allow users to dive deep into specific aspects of the data.
+PCA for dimensionality reduction
 
+Optimal clusters selected using evaluation metrics
 
-## Technologies Used
+🔹 Hierarchical Clustering
 
-- **Power BI:** For creating interactive dashboards and visualizations.
-- **Microsoft Excel:** For data cleaning and preliminary analysis.
-- **Python:** For data preprocessing and advanced analysis (optional).
+Used for structure validation on sampled data
 
-## Setup
+🔹 DBSCAN
 
-To set up and run this project locally, follow these steps:
+Used for anomaly and extreme pollution event detection
 
-1. **Clone the repository:**
-   ```sh
-   git clone git@github.com:VaishnaviThakre/Beijing-Air-Quality-Analysis-Powerbi.git
-   ```
-2. **Open the Power BI file:** Download and open the `.pbix` file in Power BI Desktop.
-3. **Explore the dashboard:** Navigate through the pages and interact with the visualizations.
+📐 Cluster Evaluation Metrics
 
-## Contributing
+Elbow Method
 
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please create an issue or submit a pull request.
+Silhouette Score
 
-1. Fork the repository.
-2. Create a new branch:
-   ```sh
-   git checkout -b feature/YourFeatureName
-   ```
-3. Commit your changes:
-   ```sh
-   git commit -m 'Add some feature'
-   ```
-4. Push to the branch:
-   ```sh
-   git push origin feature/YourFeatureName
-   ```
-5. Open a pull request.
+Davies–Bouldin Index
 
-## License
+✅ Optimal number of clusters selected: K = 4
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+🏭 Identified Pollution Sources
+Cluster	Pollution Source
+0	Traffic Emissions
+1	Construction & Dust
+2	Industrial Emissions
+3	Seasonal / Background
+Outlier	Extreme Pollution Events
+📊 Key Visualizations
 
+PCA cluster scatter plot
+
+Cluster-wise pollutant heatmap
+
+Hourly pollution patterns
+
+PM2.5 boxplot per cluster
+
+All figures are saved in:
+
+results/figures/
+
+🌱 Key Findings
+
+Traffic pollution peaks during rush hours
+
+Industrial emissions dominate at night
+
+Construction dust causes high PM10 variability
+
+Seasonal effects significantly influence background pollution
+
+⚠️ Limitations
+
+Unsupervised source labeling
+
+Limited meteorological modeling
+
+Station-level spatial resolution
+
+Sensitivity to extreme outliers
+
+🚀 Future Scope
+
+Integration with meteorological data
+
+Deep learning for temporal modeling
+
+GIS-based spatial analysis
+
+Real-time pollution monitoring
+
+Pollution source fingerprint generation (patent-ready)
