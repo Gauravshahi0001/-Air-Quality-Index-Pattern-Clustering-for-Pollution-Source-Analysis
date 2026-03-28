@@ -1,4 +1,5 @@
-
+🌍 Air Quality Index Pattern Clustering for Pollution Source Analysis
+📌 Project Overview
 
 Air pollution is a major environmental and public health concern. Different pollution sources such as traffic, industrial activities, construction dust, and seasonal factors contribute differently to air quality deterioration.
 
